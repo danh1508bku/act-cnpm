@@ -1,0 +1,8 @@
+# Compiled executables
+fowler
+
+# Object files
+*.o
+
+# Backup files
+*~
