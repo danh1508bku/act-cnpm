@@ -16,6 +16,7 @@ public:
   void addRental( const Rental& arg );
   std::string getName() const;
   std::string statement();
+  std::string htmlstatement();
 
 private:
   std::string _name;

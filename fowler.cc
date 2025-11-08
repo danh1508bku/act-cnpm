@@ -52,8 +52,38 @@ int main()
 	     << "Test result: " << std::endl
 	     << receipt << std::endl;
 
-  // Check if the test is passed 
+  // Check if the test is passed
   std::cout << std::endl;
   if (receipt == reference) std::cout << "---- OK ----" << std::endl;
   else  std::cout << "**** FAILED ****" << std::endl;
+
+  // Test htmlstatement() - JSON output
+  std::cout << std::endl << "=== Testing htmlstatement() ===" << std::endl << std::endl;
+
+  std::string jsonReceipt = customer.htmlstatement();
+  std::cout << "JSON output: " << std::endl << jsonReceipt << std::endl;
+
+  // Define expected JSON output
+  std::stringstream jsonExpected;
+  jsonExpected << "{\n"
+               << "  \"customer\": \"\",\n"
+               << "  \"rentals\": [\n"
+               << "    {\n"
+               << "      \"title\": \"Snow White and the Seven Dwarfs\",\n"
+               << "      \"amount\": 1.5\n"
+               << "    },\n"
+               << "    {\n"
+               << "      \"title\": \"Gone with the Wind\",\n"
+               << "      \"amount\": 2\n"
+               << "    }\n"
+               << "  ],\n"
+               << "  \"totalAmount\": 3.5,\n"
+               << "  \"frequentRenterPoints\": 2\n"
+               << "}";
+
+  std::cout << std::endl;
+  if (jsonReceipt == jsonExpected.str())
+    std::cout << "---- JSON TEST OK ----" << std::endl;
+  else
+    std::cout << "**** JSON TEST FAILED ****" << std::endl;
 }
